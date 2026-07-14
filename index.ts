@@ -22,7 +22,7 @@ app.use(
 app.use(express.json());
 app.use(cookieParser()); 
 app.get("/", (req, res) => {
-  res.json({ message: "ExamNotes AI Backend Running 🚀" });
+  res.json({ message: "Backend Running for VectorUI" });
 });
 
 app.use("/api/auth" , authRouter)
