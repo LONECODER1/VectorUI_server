@@ -5,7 +5,7 @@ import { Request, Response, NextFunction } from "express";
 const isAuth = async (req: Request, res: Response, next: NextFunction) => {
   try {
 
-    let { token } = req.cookies;
+    let token = req.cookies.token || req.headers.authorization?.split(" ")[1];
 
     if (!token) {
       return res.status(400).json({ message: "user doesn't have token" })

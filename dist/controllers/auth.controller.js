@@ -29,7 +29,7 @@ export const googleSignup = async (req, res) => {
             sameSite: "none",
             maxAge: 7 * 24 * 60 * 60 * 1000
         });
-        return res.status(200).json(user);
+        return res.status(200).json({ user, token });
     }
     catch (error) {
         console.log(error);
@@ -64,7 +64,7 @@ export const signup = async (req, res) => {
         // Strip password from response
         const userWithoutPassword = user.toObject();
         delete userWithoutPassword.password;
-        return res.status(201).json(userWithoutPassword);
+        return res.status(201).json({ user: userWithoutPassword, token });
     }
     catch (error) {
         console.log(error);
@@ -103,7 +103,7 @@ export const login = async (req, res) => {
         });
         const userWithoutPassword = user.toObject();
         delete userWithoutPassword.password;
-        return res.status(200).json(userWithoutPassword);
+        return res.status(200).json({ user: userWithoutPassword, token });
     }
     catch (error) {
         console.log(error);
